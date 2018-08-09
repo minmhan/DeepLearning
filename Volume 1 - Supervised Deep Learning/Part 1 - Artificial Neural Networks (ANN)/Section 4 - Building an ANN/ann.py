@@ -52,15 +52,16 @@ from keras.layers import Dense
 classifier = Sequential()
 
 # Adding the input layer and the first hidden layer
+# Practical rule of thumb for units = (num_input + num_out)/2
 classifier.add(Dense(units = 6, kernel_initializer = 'uniform', activation = 'relu', input_dim = 11))
 
 # Adding the second hidden layer
 classifier.add(Dense(units = 6, kernel_initializer = 'uniform', activation = 'relu'))
 
-# Adding the output layer
+# Adding the output layer, (note: if output is category, choose activation to ???)
 classifier.add(Dense(units = 1, kernel_initializer = 'uniform', activation = 'sigmoid'))
 
-# Compiling the ANN
+# Compiling the ANN, for category outcome, loss=category_crossentropy
 classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
 # Fitting the ANN to the Training set
